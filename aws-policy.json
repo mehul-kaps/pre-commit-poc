@@ -1,0 +1,20 @@
+{
+   "Version":"2012-10-17",
+   "Statement":{
+      "Effect":"Allow",
+      "Action":"s3:PutObject",
+      "Resource":"arn:aws:s3:::my-bucket/*",
+      "Condition":{
+         "StringEquals":{
+            "s3:x-amz-acl":"public-read"
+         },
+         "IpAddress":{
+            "aws:SourceIp":"203.0.113.0/24"
+         },
+         "DateGreaterThan":{
+            "aws:CurrentTime":"2023-01-01T00:00:00Z"
+         }
+      }
+   }
+}
+
