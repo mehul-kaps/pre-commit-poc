@@ -11,4 +11,8 @@ public class PrecommitHookPocApplication {
   }
 
   private int unusedVariable = 42;
+
+  private void unusedMethod() {
+    System.out.println("This method is never called");
+  }
 }

@@ -42,7 +42,8 @@ repos:
     hooks:
       - id: pmd-java
         name: PMD Java Static Analysis
-        entry: ./scripts/run-pmd.sh
-        language: script
+        entry: bash -c './scripts/run-pmd.sh "$@"' #./scripts/run-pmd.sh
         files: ^src/main
         types: [ java ]
+        language: system
+        pass_filenames: true
