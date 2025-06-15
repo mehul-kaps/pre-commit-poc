@@ -6,8 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class PrecommitHookPocApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(PrecommitHookPocApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(PrecommitHookPocApplication.class, args);
+  }
 
+  private int unusedVariable = 42;
 }

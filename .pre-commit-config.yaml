@@ -1,9 +1,48 @@
 repos:
+  #  - repo: local
+  #    hooks:
+  #      - id: xmllint
+  #        name: Check XML formatting
+  #        entry: xmllint --noout
+  #        language: system
+  #        files: \.xml$
+  #        description: Validates XML files are well-formed using xmllint
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-yaml
+      - id: check-json
+      - id: check-xml
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-case-conflict
+  #      - id: check-added-large-files
+  #        args: ['maxkb=1000']
+
   - repo: local
     hooks:
-      - id: xmllint
-        name: Check XML formatting
-        entry: xmllint --noout
+      - id: google-java-format-check
+        name: Google Java Format Check
+        entry: bash -c 'java -jar scripts/google-java-format-1.27.0-all-deps.jar --dry-run --set-exit-if-changed "$@"' --
         language: system
-        files: \.xml$
-        description: Validates XML files are well-formed using xmllint
+        types: [java]
+        files: \.java$
+        pass_filenames: true
+
+      - id: google-java-format-fix
+        name: Google Java Format Fix
+        entry: bash -c 'java -jar scripts/google-java-format-1.27.0-all-deps.jar --replace "$@"' --
+        language: system
+        files: \.java$
+        pass_filenames: true
+
+
+  - repo: local
+    hooks:
+      - id: pmd-java
+        name: PMD Java Static Analysis
+        entry: ./scripts/run-pmd.sh
+        language: script
+        files: ^src/main
+        types: [ java ]
