@@ -6,13 +6,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class PrecommitHookPocApplication {
 
+  private int uui = 42;
+
   public static void main(String[] args) {
     SpringApplication.run(PrecommitHookPocApplication.class, args);
   }
 
-  private int unusedVariable = 42;
-
-  private void unusedMethod() {
-    System.out.println("This method is never called");
+  public void unusedMethod() {
+    System.out.println("This method is never called.");
   }
 }

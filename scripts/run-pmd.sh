@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "Starting pmd check...[MK]"
 success=true
 for file in "$@"; do
   if [[ "$file" == *.java ]]; then
